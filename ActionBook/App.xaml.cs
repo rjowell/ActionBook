@@ -57,7 +57,7 @@ namespace ActionBook
             paramList.Add("id", firebaseID);
             Console.WriteLine(firebaseID);
             Uri postURL = new Uri("https://www.cvx4u.com/ActionBook/getUserInfoByFirebaseID.php");
-
+            //hello
             byte[] responseResult = client.UploadValues(postURL, paramList);
             Console.WriteLine(System.Text.Encoding.UTF8.GetString(responseResult));
             JObject responseText = JObject.Parse(System.Text.Encoding.UTF8.GetString(responseResult));
