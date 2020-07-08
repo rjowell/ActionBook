@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" NavigationPage.HasNavigationBar="False" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ActionBook.ViewProfile">
+    <ContentPage.Content>
+        <RelativeLayout>
+            <RelativeLayout.Resources>
+              <ResourceDictionary>
+                  <OnIdiom x:TypeArguments="x:Double" Phone="-120" Tablet="-170" x:Key="profileYOffset"/>
+                  <OnIdiom x:TypeArguments="x:Double" Phone="-45" Tablet="-70" x:Key="addButtonYConstant"/>
+                  <OnIdiom x:TypeArguments="x:Double" Phone="-105" Tablet="-190" x:Key="addButtonXConstant"/>
+
+                  </ResourceDictionary>
+                </RelativeLayout.Resources>
+      <StackLayout BackgroundColor="#0f4a08" Padding="{OnPlatform Android='0,0,0,0',iOS='0,25,0,0'}"> 
+       
+            <StackLayout  Margin="0,7,0,3" x:Name="titleBar" Orientation="Horizontal">
+                <Label Text=" " FontSize="15"/>
+                <Image x:Name="menuButton" Source="https://www.cvx4u.com/ActionBook/app_assets/menusandwich.png" HeightRequest="32"></Image>
+                <Image Source="https://www.cvx4u.com/ActionBook/app_assets/ActionBookLogo.png" HeightRequest="29"></Image>
+                
+                <Button x:Name="goBack" Text="Go Back" FontSize="15" HorizontalOptions="EndAndExpand" FontFamily="{StaticResource MyriadBold}" TextColor="White"  Padding="2"></Button>
+            </StackLayout>
+            
+            <RelativeLayout BackgroundColor="ForestGreen" x:Name="topLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <RelativeLayout.HeightRequest>
+                    <OnIdiom x:TypeArguments="x:Double" Phone="160" Tablet="350"/>
+                </RelativeLayout.HeightRequest>
+                
+                <Image RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}" x:Name="backgroundPhoto"  Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" >
+                  <Image.HeightRequest>
+                    <OnIdiom x:TypeArguments="x:Double" Phone="160" Tablet="350"/>
+                </Image.HeightRequest>
+                     <Image.WidthRequest>
+                    <OnIdiom x:TypeArguments="x:Double" Phone="400" Tablet="1000"/>
+                </Image.WidthRequest>
+
+
+                </Image>
+                <StackLayout  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=topLayout,Property=Height,Factor=1,Constant={StaticResource Key=profileYOffset}}">
+                    <Image x:Name="userPhotoDisplay"  HorizontalOptions="StartAndExpand" Margin="0,0,0,-10" Source="https://www.cvx4u.com/ActionBook/userPhotos/U1000.png">
+                        <Image.HeightRequest>
+                            <OnIdiom x:TypeArguments="x:Double" Phone="90" Tablet="135"/>
+                        </Image.HeightRequest>
+                    </Image>
+                    <Label x:Name="userNameDisplay" BackgroundColor="Black" TextColor="White" FontFamily="{StaticResource Myriad}">
+                        <Label.FontSize>
+                            <OnIdiom x:TypeArguments="x:Double" Phone="25" Tablet="40"/>
+                        </Label.FontSize>
+                    </Label>
+                </StackLayout>
+                <Button x:Name="addPageButton" FontFamily="{StaticResource Myriad}" Clicked="ShowWindow" Text="+Add Page" HeightRequest="27" BackgroundColor="Black" TextColor="White" Padding="0" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant={StaticResource Key=addButtonYConstant}}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant={StaticResource Key=addButtonXConstant}">
+                    <Button.HeightRequest>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="27" Tablet="50"/>
+                    </Button.HeightRequest>
+                    <Button.WidthRequest>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="60" Tablet="150"/>
+                    </Button.WidthRequest>
+                     <Button.FontSize>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="26"/>
+                    </Button.FontSize>
+                </Button>
+                    
+                        
+            </RelativeLayout>
+
+            
+            <ListView BackgroundColor="ForestGreen" x:Name="pageListDisplay" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <RelativeLayout BackgroundColor="#D4F1DD" x:Name="rowLayout" AutomationId="{Binding PageID}" HorizontalOptions="CenterAndExpand" Margin="10,10,10,10">
+                            <StackLayout Spacing="0" Orientation="Horizontal" VerticalOptions="EndAndExpand"  x:Name="photoDisplay" >
+                                
+                                
+                                <Image x:Name="imageOne" Aspect="AspectFill" WidthRequest="80"  Source="{Binding FirstPics[0]}">
+                                    <Image.HeightRequest>
+                                        <OnIdiom x:TypeArguments="x:Double" Phone="60" Tablet="140"/>
+                                    </Image.HeightRequest>
+                                    <Image.WidthRequest>
+                                        <OnIdiom x:TypeArguments="x:Double" Phone="80" Tablet="180"/>
+                                    </Image.WidthRequest>
+                                </Image>
+                                <Image x:Name="imageTwo" Aspect="AspectFill" HeightRequest="60" WidthRequest="80"   Source="{Binding FirstPics[1]}">
+                                      <Image.HeightRequest>
+                                        <OnIdiom x:TypeArguments="x:Double" Phone="60" Tablet="140"/>
+                                    </Image.HeightRequest>
+                                    <Image.WidthRequest>
+                                        <OnIdiom x:TypeArguments="x:Double" Phone="80" Tablet="180"/>
+                                    </Image.WidthRequest>
+                                </Image>
+                                <Image x:Name="imageThree" Aspect="AspectFill" HeightRequest="60" WidthRequest="80"  Source="{Binding FirstPics[2]}">
+                                      <Image.HeightRequest>
+                                        <OnIdiom x:TypeArguments="x:Double" Phone="60" Tablet="140"/>
+                                    </Image.HeightRequest>
+                                    <Image.WidthRequest>
+                                        <OnIdiom x:TypeArguments="x:Double" Phone="80" Tablet="180"/>
+                                    </Image.WidthRequest>
+                                </Image>
+                                <Image x:Name="imageFour" Aspect="AspectFill" HeightRequest="60" WidthRequest="80"  Source="{Binding FirstPics[3]}">
+                                      <Image.HeightRequest>
+                                        <OnIdiom x:TypeArguments="x:Double" Phone="60" Tablet="140"/>
+                                    </Image.HeightRequest>
+                                    <Image.WidthRequest>
+                                        <OnIdiom x:TypeArguments="x:Double" Phone="80" Tablet="180"/>
+                                    </Image.WidthRequest>
+                                </Image>
+                               
+                            </StackLayout>
+                                <Label FontFamily="{StaticResource Myriad}" Text="{Binding PageTitle}" BackgroundColor="Black" TextColor="White" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=photoDisplay, Property=Height, Constant=-25}">
+                                    <Label.FontSize>
+                                        <OnIdiom x:TypeArguments="x:Double" Phone="20" Tablet="50"/>
+                                    </Label.FontSize>
+
+                                </Label>
+                                <RelativeLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OpenPage" NumberOfTapsRequired="1"/>
+                                </RelativeLayout.GestureRecognizers>
+                            </RelativeLayout>
+                            
+                        </ViewCell>
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+                </ListView>
+                </StackLayout>
+            <StackLayout x:Name="createPageWindow" Padding="25" BackgroundColor="#0B3F0C" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Factor=0.8,Property=Width}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.1}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=0.2}">
+                <Label x:Name="statusLabel" Text="Enter Page Name" FontSize="20" TextColor="White" FontFamily="{StaticResource Myriad}" HorizontalTextAlignment="Center"/>
+                <Entry x:Name="pageNameEntry" MaxLength="21" BackgroundColor="White" TextColor="Black"/>
+                <Label HorizontalTextAlignment="Center" x:Name="confirmNameLabel" FontFamily="{StaticResource Myriad}" FontSize="20" TextColor="White"/>
+                <Button x:Name="selectPicture" Clicked="PictureSelect" Text="Select Background Image" FontSize="20" TextColor="#D5F4DF" FontFamily="{StaticResource Myriad}"/>
+                <Image x:Name="viewBackImage" HeightRequest="150" BackgroundColor="#bcd4bf" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"/>
+
+                <StackLayout Spacing="8" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Button Clicked="CloseWindow" HorizontalOptions="StartAndExpand" Text="Cancel" BackgroundColor="Transparent" TextColor="LightGreen" FontFamily="{StaticResource Myriad}"/>
+                    <Button x:Name="submitButton" HorizontalOptions="EndAndExpand" Clicked="SubmitPageName" BackgroundColor="Transparent" TextColor="LightGreen" FontFamily="{StaticResource Myriad}" Text="Submit"/><Button x:Name="confirmButton" Clicked="SubmitNewPage" BackgroundColor="Transparent" TextColor="LightGreen" FontFamily="{StaticResource Myriad}" Text="Confirm"/> </StackLayout>
+            </StackLayout>
+               <StackLayout Padding="8" x:Name="mainMenu" BackgroundColor="#135A15" RelativeLayout.YConstraint="{ConstraintExpression Type=Constant,Constant=65}">
+            <Button x:Name="editProfile" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Edit Profile"/>
+            <Button x:Name="editPages" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Edit Pages"/>
+            <Button x:Name="logoutButton" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Logout"/>
+            <Button x:Name="helpButton" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" Clicked="GoToHelp" FontSize="17" Text="Help"/>
+        </StackLayout>
+            </RelativeLayout>
+            
+            
+    </ContentPage.Content>
+</ContentPage>
+
+
+<!--
+
+
+
+
+
+-->

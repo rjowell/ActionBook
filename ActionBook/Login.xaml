@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage BackgroundColor="#005f28" NavigationPage.HasNavigationBar="False" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ActionBook.Login">
+    <ContentPage.Content>
+        <StackLayout Margin="15" VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal">
+            <Label Text="actionBook" FontFamily="{StaticResource MyriadBold}" TextColor="White">
+                <Label.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="30" Tablet="60"/>
+                   </Label.FontSize>
+            </Label>
+                <ActivityIndicator x:Name="loginIndicator" HorizontalOptions="EndAndExpand" Color="White"></ActivityIndicator>
+            </StackLayout>
+                <Label TextColor="#FAA9A7" FontAttributes="Bold" FontSize="18" x:Name="errorMessage"></Label>
+            <Label Text="E-Mail or Handle" FontFamily="{StaticResource MyriadBold}" TextColor="White">
+                 <Label.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                   </Label.FontSize>
+            
+            </Label>
+            <Entry x:Name="handleOrEmail" BackgroundColor="White" TextColor="Black">
+                <Entry.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                   </Entry.FontSize>
+            </Entry>
+            <Label Text="Password"   FontFamily="{StaticResource MyriadBold}" TextColor="White">
+                <Label.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                   </Label.FontSize>
+            </Label>
+            <Entry x:Name="password" IsPassword="True" BackgroundColor="White" TextColor="Black">
+                <Entry.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                   </Entry.FontSize>
+            </Entry>
+            <Button Text="Login" BackgroundColor="Transparent" FontSize="15" TextColor="White" FontFamily="{StaticResource MyriadBold}" Clicked="LoginUser">
+                <Button.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                   </Button.FontSize>
+            </Button>
+            <Button Text="Create New Account" BackgroundColor="Transparent" FontSize="15" FontFamily="{StaticResource MyriadBold}" TextColor="White" Clicked="OpenCreateAccount">
+                <Button.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                   </Button.FontSize>
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

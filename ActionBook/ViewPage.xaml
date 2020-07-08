@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" NavigationPage.HasNavigationBar="False" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ActionBook.ViewPage">
+    <ContentPage.Content>
+        <RelativeLayout>
+         <StackLayout Spacing="0" HorizontalOptions="FillAndExpand" BackgroundColor="ForestGreen" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1}" >
+            <StackLayout  Orientation="Horizontal"  Padding="0,32,0,0" BackgroundColor="#0f4a08">
+                <Image x:Name="menuButton" Source="https://www.cvx4u.com/ActionBook/app_assets/menusandwich.png" HeightRequest="20"></Image>
+                <Image Source="https://www.cvx4u.com/ActionBook/app_assets/ActionBookLogo.png"></Image>
+
+                <Button x:Name="goBack" Text="Go Back" FontSize="15" HorizontalOptions="EndAndExpand" FontFamily="{StaticResource MyriadBold}" TextColor="White"  Padding="2"></Button>
+            </StackLayout>
+             <RelativeLayout HeightRequest="180" x:Name="topLayout" HorizontalOptions="FillAndExpand">
+                <Image RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1}" x:Name="backgroundPhoto"  Aspect="Fill" HeightRequest="160" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand"/>
+                    
+                 
+                <StackLayout  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=1,Constant=-70}">
+                   
+                    <Label x:Name="pageName" Text="PageName" BackgroundColor="Black" TextColor="White" FontFamily="{StaticResource Myriad}" FontSize="25"></Label>
+                     <Label x:Name="userName" Text="UserName" BackgroundColor="Black" TextColor="White" FontFamily="{StaticResource Myriad}" FontSize="18"></Label>
+                </StackLayout>
+                 
+             </RelativeLayout>
+             <ListView x:Name="itemList" BackgroundColor="ForestGreen" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,ElementName=topLayout,Property=Height,Factor=1}" HasUnevenRows="True" Scrolled="Scroll" ItemAppearing="HandleItemAppearing" ItemDisappearing="HandleItemDisappear">
+                 <ListView.ItemTemplate>
+                     <DataTemplate>
+                         <ViewCell>
+                             <RelativeLayout HeightRequest="318">
+                                  <RelativeLayout.Resources>
+                                        <ResourceDictionary>
+                                             <OnPlatform x:TypeArguments="x:Double" iOS="-260" Android="-150" x:Key="XFactor" />
+                                             <OnPlatform x:TypeArguments="x:Double" iOS="220" Android="140" x:Key="Width" />
+                                            
+                                        </ResourceDictionary>
+                                     </RelativeLayout.Resources>
+                          <StackLayout BackgroundColor="#B1F1B3" x:Name="mainStack" Margin="7" Spacing="1">
+                              <StackLayout Margin="0,4,0,4" IsVisible="{Binding IsShare}" x:Name="profileStack" Orientation="Horizontal">
+                                  <Label FontFamily="{StaticResource MyriadBold}" FontAttributes="Italic" Text="Shared From:"/>
+                                  <Button Text="{Binding UserName}" FontFamily="{StaticResource MyriadBold}" FontSize="16" HeightRequest="10" Margin="0" Padding="0" AutomationId="{Binding UserID}" BackgroundColor="Transparent" x:Name="linkToProfile" ClassId="{Binding UserID}"/>
+                                  <Label FontFamily="{StaticResource MyriadBold}" FontAttributes="Italic" Text=" -> "/>
+                                  <Button x:Name="linkToPage" BackgroundColor="Transparent" FontFamily="{StaticResource MyriadBold}" Text="{Binding PageName}" AutomationId="{Binding PageID}" ClassId="{Binding UserID}" Margin="0" Padding="0" FontSize="16" HeightRequest="10"/>
+                                  <!-- <Button       /> -->
+                              </StackLayout>
+                              <Label VerticalOptions="CenterAndExpand" x:Name="postDate" Text="{Binding PostDate}" FontFamily="{StaticResource Myriad}" TextColor="Gray" Margin="0,0,5,0" HorizontalOptions="EndAndExpand"/>
+                              <RelativeLayout RotationX="180" HeightRequest="210"  BackgroundColor="{Binding PicBackgroundColor}" x:Name="contentStack" HorizontalOptions="CenterAndExpand">
+                                  
+                                  <StackLayout RotationX="180" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}" Orientation="Vertical">
+                                    <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Source="{Binding ImageURL}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Constant=1}"/>
+                                        </StackLayout>
+                                  <Label RotationX="180" x:Name="contentCaption" Text="{Binding PostCaption}" BackgroundColor="Black" TextColor="White" FontSize="18" FontFamily="{StaticResource Myriad}" LineBreakMode="WordWrap" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.7}" HorizontalOptions="Start" VerticalOptions="End"/>
+                                   
+                                    <Button x:Name="gestureButton" Clicked="ShowInfo" ClassId="{Binding ContentID}" BackgroundColor="Transparent" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1}"/>
+                                   <StackLayout RotationX="180" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=-50}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=-105}" Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="5">
+                                         <StackLayout VerticalOptions="Center">
+                                         <ImageButton Clicked="ShowFlagMenu" ClassId="{Binding ContentID}" x:Name="flagButton" BackgroundColor="Transparent" Source="https://www.cvx4u.com/ActionBook/app_assets/flagicon.png">
+                                                <ImageButton.HeightRequest>
+                                                    <OnPlatform x:TypeArguments="x:Double">
+                                                        <On Platform="iOS" Value="35"/>
+                                                        <On Platform="Android" Value="30"/>
+                                                    </OnPlatform>
+                                                </ImageButton.HeightRequest>
+                                                <ImageButton.WidthRequest>
+                                                     <OnPlatform x:TypeArguments="x:Double">
+                                                        <On Platform="iOS" Value="35"/>
+                                                        <On Platform="Android" Value="30"/>
+                                                    </OnPlatform>
+                                                </ImageButton.WidthRequest>
+
+                                            </ImageButton>
+                                             </StackLayout>
+                                             <Image x:Name="typeImage" Source="{Binding TypeImageSource}" HeightRequest="50" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height, Factor=1, Constant=-50}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=-55}"/>
+                                        </StackLayout>
+                              </RelativeLayout>
+                              <StackLayout x:Name="bottomLayout" Padding="4" BackgroundColor="#B1F1B3" Orientation="Horizontal">
+                                    <RelativeLayout x:Name="likeLayout" HorizontalOptions="Start" HeightRequest="40" WidthRequest="40">
+                                        <StackLayout x:Name="likeStack">
+                                            <Label Text="Like" TextColor="Green" HorizontalTextAlignment="Center" FontSize="17" FontFamily="{StaticResource Myriad}"/>
+                                            <Label x:Name="likeCount" HorizontalTextAlignment="Center" FontSize="17" Text="{Binding Likes}" FontFamily="{StaticResource Myriad}"/>
+                                        </StackLayout>
+                                        <Button x:Name="likeButton" ClassId="like" Clicked="ShowLikesDontShares" Text="{Binding Likes}" TextColor="Transparent" AutomationId="{Binding ContentID}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}" BackgroundColor="{Binding LikeButtonBackground}" Opacity="{Binding LikeButtonOpacity}" IsEnabled="{Binding LikesOn}"/>
+                                    </RelativeLayout>
+                                    <RelativeLayout x:Name="dontLikeLayout" HorizontalOptions="Start" HeightRequest="40" WidthRequest="80">
+                                             <StackLayout x:Name="dontLikeStack">
+                                            <Label Text="Don't Like" TextColor="Red" HorizontalTextAlignment="Center" FontSize="17" FontFamily="{StaticResource Myriad}"/>
+                                            <Label x:Name="dontLikeCount" HorizontalTextAlignment="Center" FontSize="17" Text="{Binding DontLikes}" FontFamily="{StaticResource Myriad}"/>
+                                        </StackLayout>
+                                        <Button x:Name="dontLikeButton" ClassId="dontLike" Clicked="ShowLikesDontShares" Text="{Binding DontLikes}" TextColor="Transparent" AutomationId="{Binding ContentID}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}" BackgroundColor="{Binding DontLikeButtonBackground}" Opacity="{Binding DontLikeButtonOpacity}" IsEnabled="{Binding DontLikesOn}"/>
+                                    
+
+                                    </RelativeLayout>
+                                    <RelativeLayout x:Name="shareLayout" HorizontalOptions="EndAndExpand" HeightRequest="40" WidthRequest="120">
+                                                 <StackLayout x:Name="shareStack">
+                                            <Label Text="Share To Page" TextColor="Blue" HorizontalTextAlignment="Center" FontSize="17" FontFamily="{StaticResource Myriad}"/>
+                                            <Label x:Name="shareCount" HorizontalTextAlignment="Center" FontSize="17" Text="{Binding Shares}" FontFamily="{StaticResource Myriad}"/>
+                                        </StackLayout>
+                                        <Button x:Name="shareButton" ClassId="share" Clicked="ShowLikesDontShares" Text="{Binding Shares}" TextColor="Transparent" AutomationId="{Binding ContentID}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}" BackgroundColor="Transparent"/>
+                                    
+                                    </RelativeLayout>
+                                </StackLayout>
+                          </StackLayout>
+                                  <StackLayout ClassId="{Binding ContentID}" x:Name="flagMenu" IsVisible="{Binding FlagMenuVisible}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=-225}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant={StaticResource Key=XFactor}}" Padding="4"  WidthRequest="{StaticResource Key=Width}"  Spacing="0" BackgroundColor="ForestGreen">
+
+                                            <Label HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="22" TextColor="White" FontFamily="{StaticResource MyriadBold}" Text="What's Up?"/>
+                                            <Button WidthRequest="215" HeightRequest="35" HorizontalOptions="CenterAndExpand" Padding="0" Margin="0"  FontSize="15" TextColor="#D7F9D8" FontFamily="{StaticResource Myriad}" BackgroundColor="Transparent" Clicked="ProcessIssue" ClassId="offensive" AutomationId="{Binding ContentID}" Text="This is offensive"/>
+                                            <Button WidthRequest="215"    HorizontalOptions="CenterAndExpand"  Margin="0" FontSize="15" TextColor="#D7F9D8" FontFamily="{StaticResource Myriad}" BackgroundColor="Transparent" ClassId="wrong" Clicked="ProcessIssue" AutomationId="{Binding ContentID}" Text="This content is factually wrong"/>
+                                            <Button WidthRequest="215"  HorizontalOptions="CenterAndExpand" Margin="0" FontSize="15" TextColor="#D7F9D8" FontFamily="{StaticResource Myriad}" BackgroundColor="Transparent" Clicked="ProcessIssue" ClassId="hideposts" AutomationId="{Binding ContentID}" Text="Block this user's posts"/>
+                                       
+                                       
+                                    </StackLayout>
+                                 </RelativeLayout>
+                             </ViewCell>
+                     </DataTemplate>
+                 </ListView.ItemTemplate>
+             </ListView>
+             </StackLayout>
+             <StackLayout Padding="14" x:Name="pickerLayout" BackgroundColor="ForestGreen" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.8}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=0.4}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.1}">
+            <Label TextColor="White" FontAttributes="Bold" FontSize="19"  Text="What Page Do You Want To Post To?" HorizontalTextAlignment="Center"/>
+            <Picker x:Name="pagePicker" Title="Select Page to Post" TitleColor="White" TextColor="White"></Picker>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button x:Name="shareCancel" BackgroundColor="Transparent" FontSize="21" TextColor="#C9FFCB" FontFamily="{StaticResource Myriad}" Text="Cancel"/>
+                <Button x:Name="shareSubmit" BackgroundColor="Transparent" FontSize="21" TextColor="#C9FFCB" FontFamily="{StaticResource Myriad}" Text="Submit"/>
+                </StackLayout>
+        </StackLayout>
+             <StackLayout Padding="14" IsVisible="false" x:Name="flagWindow" BackgroundColor="ForestGreen" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.8}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=0.4}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.1}">
+            <Label x:Name="flagWindowLabel" TextColor="White" FontAttributes="Bold" FontSize="19"  Text="Flag Text" HorizontalTextAlignment="Center"/>
+            
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Clicked="DismissFlagWindow"  BackgroundColor="Transparent" FontSize="21" TextColor="#C9FFCB" FontFamily="{StaticResource Myriad}" Text="OK"/>
+                
+                </StackLayout>
+        </StackLayout>
+             <StackLayout Padding="8" x:Name="mainMenu" BackgroundColor="#135A15" RelativeLayout.YConstraint="{ConstraintExpression Type=Constant,Constant=65}">
+            <Button x:Name="editProfile" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Edit Profile"/>
+            <Button x:Name="editPages" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Edit Pages"/>
+            <Button x:Name="logoutButton" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Logout"/>
+        </StackLayout>
+            </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

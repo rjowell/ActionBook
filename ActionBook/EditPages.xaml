@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ActionBook.EditPages">
+    <ContentPage.Content>
+         <StackLayout>
+        
+            <StackLayout x:Name="titleBar" Orientation="Horizontal" BackgroundColor="ForestGreen">
+                <Image x:Name="menuButton" Source="https://www.cvx4u.com/ActionBook/app_assets/menusandwich.png" HeightRequest="20"></Image>
+                <Image Source="https://www.cvx4u.com/ActionBook/app_assets/ActionBookLogo.png"></Image>
+
+                
+            </StackLayout>
+             </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

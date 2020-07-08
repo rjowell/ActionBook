@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" NavigationPage.HasNavigationBar="False" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ActionBook.HelpPage">
+    <ContentPage.Content>
+        <RelativeLayout BackgroundColor="ForestGreen">
+        <StackLayout>
+            <StackLayout Margin="0,0,0,3" Padding="{OnPlatform Android='0,0,0,0',iOS='0,25,0,0'}" BackgroundColor="#0f4a08" x:Name="titleBar" Orientation="Horizontal">
+                <Label Text=" " FontSize="15"/>
+                <Image x:Name="menuButton" Source="https://www.cvx4u.com/ActionBook/app_assets/menusandwich.png" HeightRequest="32"></Image>
+                <Image Source="https://www.cvx4u.com/ActionBook/app_assets/ActionBookLogo.png" HeightRequest="29"></Image>
+                <Button x:Name="goBack" Text="Go Back" FontSize="15" HorizontalOptions="EndAndExpand" FontFamily="{StaticResource MyriadBold}" TextColor="White"  Padding="2"></Button>
+                
+            </StackLayout>
+            <Label Margin="0,20,0,0" HorizontalOptions="Center" FontSize="22" HorizontalTextAlignment="Center" FontFamily="{StaticResource Myriad}" TextColor="White" Text="Action Book is your visual, social news feed (think Pinterest for news and current events). You can share news articles and other kinds of actionable content right from your phone. Content is classified into 3 types:"/>
+          <Grid Margin="0,15,0,0">
+              <Grid.RowDefinitions>
+                  <RowDefinition/>
+                  <RowDefinition/>
+                  <RowDefinition/>
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="75"/>
+                  <ColumnDefinition/>
+              </Grid.ColumnDefinitions>
+              <Image Grid.Row="0" Grid.Column="0" HeightRequest="70" VerticalOptions="Start" WidthRequest="70" Source="https://www.cvx4u.com/ActionBook/app_assets/LearnIcon.png"/><Label TextColor="#B1F1B3" Grid.Row="0" Grid.Column="1" FontFamily="{StaticResource Myriad}" VerticalTextAlignment="Center" FontSize="20" Text="'Learn' items are informative articles intended to educate and inform on an issue."/>
+               <Image Grid.Row="1" Grid.Column="0" HeightRequest="70" VerticalOptions="Start" WidthRequest="70" Source="https://www.cvx4u.com/ActionBook/app_assets/ActIcon.png"/><Label TextColor="#B1F1B3" Grid.Row="1" Grid.Column="1" FontFamily="{StaticResource Myriad}" VerticalTextAlignment="Center" FontSize="20" Text="'Act' items are events and actions you can take to make a difference"/>
+               <Image Grid.Row="2" Grid.Column="0" HeightRequest="70" VerticalOptions="Start" WidthRequest="70" Source="https://www.cvx4u.com/ActionBook/app_assets/GiveIcon.png"/><Label TextColor="#B1F1B3" Grid.Row="2" Grid.Column="1" FontFamily="{StaticResource Myriad}" VerticalTextAlignment="Center" FontSize="20" Text="'Give' items are causes you can financially support"/>
+          </Grid>
+        </StackLayout>
+        <StackLayout Padding="8" x:Name="mainMenu" BackgroundColor="#135A15" RelativeLayout.YConstraint="{ConstraintExpression Type=Constant,Constant=65}">
+            <Button x:Name="editProfile" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Edit Profile"/>
+            <Button x:Name="editPages" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Edit Pages"/>
+            <Button x:Name="logoutButton" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" Clicked="GoToHelp" FontSize="17" Text="Logout"/>
+            
+        </StackLayout>
+            </RelativeLayout>
+         <!-- <RelativeLayout>
+        
+    <StackLayout BackgroundColor="ForestGreen" Margin="{OnPlatform Android='0,0,0,0',iOS='0,25,0,0'}"> 
+
+
+        <StackLayout Padding="8" x:Name="mainMenu" BackgroundColor="#135A15" RelativeLayout.YConstraint="{ConstraintExpression Type=Constant,Constant=65}">
+            <Button x:Name="editProfile" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Edit Profile"/>
+            <Button x:Name="editPages" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Edit Pages"/>
+            <Button x:Name="logoutButton" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Logout"/>
+            <Button x:Name="helpButton" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" Clicked="GoToHelp" FontSize="17" Text="Help"/>
+        </StackLayout>
+            <StackLayout Margin="0,7,0,3" BackgroundColor="#0f4a08" x:Name="titleBar" Orientation="Horizontal">
+                <Label Text=" " FontSize="15"/>
+                <Image x:Name="menuButton" Source="https://www.cvx4u.com/ActionBook/app_assets/menusandwich.png" HeightRequest="32"></Image>
+                <Image Source="https://www.cvx4u.com/ActionBook/app_assets/ActionBookLogo.png" HeightRequest="29"></Image>
+                <Button x:Name="goBack" Text="Go Back" FontSize="15" HorizontalOptions="EndAndExpand" FontFamily="{StaticResource MyriadBold}" TextColor="White"  Padding="2"></Button>
+                
+            </StackLayout>
+        <StackLayout>
+        <Label HorizontalOptions="Center" LineBreakMode="WordWrap" FontSize="20" FontFamily="{StaticResource Myriad}" TextColor="White" Text="Welcome To Action Book!"/>
+        <Label HorizontalOptions="Center" LineBreakMode="WordWrap"  FontSize="17" FontFamily="{StaticResource Myriad}" TextColor="White" Text="Action Book is your visual, social news feed (think Pinterest for news and current events). You can share news articles and other kinds of actionable content right from your phone. Content is classified into 3 types:"/>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Image Source="https://www.cvx4u.com/ActionBook/app_assets/LearnIcon.png"/><Label Text="'Learn' items are informative articles intended to educate and inform on an issue"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Image Source="https://www.cvx4u.com/ActionBook/app_assets/ActIcon.png"/><Label Text="'Act' items are events and actions you can take to make a difference"/>
+
+            </StackLayout>
+             <StackLayout Orientation="Horizontal">
+                <Image Source="https://www.cvx4u.com/ActionBook/app_assets/GiveIcon.png"/><Label Text="'Give' items are causes you can financially support"/>
+
+            </StackLayout>
+        </StackLayout>
+            </StackLayout>
+        </StackLayout>
+              </RelativeLayout>-->
+    </ContentPage.Content>
+</ContentPage>

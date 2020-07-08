@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage BackgroundColor="ForestGreen" NavigationPage.HasNavigationBar="False" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ActionBook.EditProfile">
+    <ContentPage.Content>
+        <RelativeLayout HorizontalOptions="FillAndExpand" BackgroundColor="Aquamarine">
+        <StackLayout  BackgroundColor="ForestGreen" HorizontalOptions="FillAndExpand" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}">
+            <StackLayout BackgroundColor="#0f4a08" Padding="{OnPlatform Android='0,0,0,0',iOS='0,25,0,0'}">
+                
+            <StackLayout  Margin="0,7,0,3" x:Name="titleBar" Orientation="Horizontal">
+                
+                <Image x:Name="menuButton" Source="https://www.cvx4u.com/ActionBook/app_assets/menusandwich.png" HeightRequest="32"></Image>
+                <Image Source="https://www.cvx4u.com/ActionBook/app_assets/ActionBookLogo.png" HeightRequest="29"></Image>
+                <Button x:Name="userIdentifier" Clicked="GoBack" FontSize="15" Text="Go Back" VerticalOptions="Center" HorizontalOptions="EndAndExpand" FontFamily="{StaticResource MyriadBold}" BackgroundColor="Transparent" TextColor="#B1F1B3"  Padding="0,0,0,6"></Button>
+            </StackLayout>
+                </StackLayout>
+            <StackLayout BackgroundColor="#B1F1B3" Padding="25" Spacing="0" VerticalOptions="CenterAndExpand" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Constant=1}" HorizontalOptions="CenterAndExpand" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}">
+              <Label HorizontalTextAlignment="Center" Text="Edit Profile" FontSize="35" FontFamily="{StaticResource MyriadBold}" TextColor="#0f4a08"></Label>
+            <Label HorizontalTextAlignment="Center" x:Name="errorLabel"/>
+        <Label HorizontalTextAlignment="Center" Margin="0,4,0,0" Text="Handle" FontSize="27" FontFamily="{StaticResource MyriadBold}" TextColor="#50805d"/>
+            <Entry HorizontalOptions="Center" FontSize="23" x:Name="handleEntry"/>
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="20">
+                 <Button x:Name="handleEdit" FontSize="21" FontFamily="{StaticResource MyriadBold}" TextColor="#374a3c" BackgroundColor="Transparent" Text="Edit"/>
+                 <Button x:Name="handleCancel" FontSize="21" FontFamily="{StaticResource MyriadBold}" TextColor="#374a3c" BackgroundColor="Transparent" Text="Cancel"/>
+                 <Button x:Name="handleSubmit" FontSize="21" FontFamily="{StaticResource MyriadBold}" TextColor="#374a3c" BackgroundColor="Transparent" Text="Submit"/>
+            </StackLayout>
+        <Label HorizontalTextAlignment="Center" Margin="0,4,0,0" Text="E-Mail" FontSize="27" FontFamily="{StaticResource MyriadBold}" TextColor="#50805d"/>
+            <Entry HorizontalOptions="Center" FontSize="23" x:Name="eMailEntry"/>
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="20">
+                <Button x:Name="eMailEdit" FontSize="21" FontFamily="{StaticResource MyriadBold}" TextColor="#374a3c" BackgroundColor="Transparent" Text="Edit"/>
+                <Button x:Name="eMailCancel" FontSize="21" FontFamily="{StaticResource MyriadBold}" TextColor="#374a3c" BackgroundColor="Transparent" Text="Cancel"/>
+                <Button x:Name="eMailSubmit" FontSize="21" FontFamily="{StaticResource MyriadBold}" TextColor="#374a3c" BackgroundColor="Transparent" Text="Submit"/>
+            </StackLayout>
+        <Label HorizontalTextAlignment="Center" Margin="0,4,0,0" Text="Password" FontSize="27" FontFamily="{StaticResource MyriadBold}" TextColor="#50805d"/>
+            <Entry HorizontalOptions="Center" FontSize="23" x:Name="passwordEntry"/>
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="20">
+                <Button x:Name="passwordEdit" FontSize="21" FontFamily="{StaticResource MyriadBold}" TextColor="#374a3c" BackgroundColor="Transparent" Text="Edit"/>
+                <Button x:Name="passwordCancel" FontSize="21" FontFamily="{StaticResource MyriadBold}" TextColor="#374a3c" BackgroundColor="Transparent" Text="Cancel"/>
+                <Button x:Name="passwordSubmit" FontSize="21" FontFamily="{StaticResource MyriadBold}" TextColor="#374a3c" BackgroundColor="Transparent" Text="Submit"/>
+            </StackLayout>
+                </StackLayout>
+        </StackLayout>
+         <StackLayout Padding="8" x:Name="mainMenu" BackgroundColor="#135A15" RelativeLayout.YConstraint="{ConstraintExpression Type=Constant,Constant=75}">
+            
+            <Button x:Name="editPages" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Edit Pages"/>
+            <Button x:Name="logoutButton" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Logout"/>
+             <Button x:Name="mainButton" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Main Page"/>
+        </StackLayout>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

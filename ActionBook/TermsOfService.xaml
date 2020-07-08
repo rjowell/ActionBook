@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage BackgroundColor="#005f28" NavigationPage.HasNavigationBar="False" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ActionBook.TermsOfService">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            
+            <Label Text="Terms and Conditions" FontFamily="{StaticResource MyriadBold}" TextColor="White">
+                <Label.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="30" Tablet="60"/>
+                   </Label.FontSize>
+            </Label>
+           <ScrollView HeightRequest="400" WidthRequest="140">
+       <Label BackgroundColor="White" FontSize="17" HorizontalTextAlignment="Center" TextColor="Black" x:Name="infoLabel"/>
+               
+                </ScrollView>
+            <StackLayout Orientation="Horizontal" WidthRequest="140" HorizontalOptions="CenterAndExpand">
+                 <Button HorizontalOptions="StartAndExpand" Text="Agree" Clicked="GoAhead" BackgroundColor="Transparent" FontSize="15" TextColor="White" FontFamily="{StaticResource MyriadBold}">
+                  <Button.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                   </Button.FontSize>
+            </Button>
+
+                 <Button HorizontalOptions="EndAndExpand" Text="Disagree" BackgroundColor="Transparent" FontSize="15" FontFamily="{StaticResource MyriadBold}" TextColor="White" Clicked="GoBack">
+                <Button.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                   </Button.FontSize>
+            </Button>
+            </StackLayout>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

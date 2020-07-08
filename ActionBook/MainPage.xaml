@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"  BackgroundColor="#0f4a08" NavigationPage.HasNavigationBar="False" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="ActionBook.MainPage">
+
+    <RelativeLayout>
+        
+    <StackLayout Margin="{OnPlatform Android='0,0,0,0',iOS='0,25,0,0'}"> 
+       
+            <StackLayout Margin="0,7,0,3" x:Name="titleBar" Orientation="Horizontal">
+                
+                <Label Text=" " FontSize="15"/>
+                <Image x:Name="menuButton" Source="https://www.cvx4u.com/ActionBook/app_assets/menusandwich.png">
+                    <Image.HeightRequest>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="32" Tablet="50"/>
+                    </Image.HeightRequest>
+                    <Image.Margin>
+                         
+                        <OnIdiom x:TypeArguments="Thickness" Phone="0" Tablet="12"/>
+                    
+                    </Image.Margin>
+                    <!--<Entry.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                   </Entry.FontSize>-->
+                </Image>
+                <Image Source="https://www.cvx4u.com/ActionBook/app_assets/ActionBookLogo.png">
+                    <Image.HeightRequest>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="28" Tablet="46"/>
+                    </Image.HeightRequest>
+
+                </Image>
+                <Label x:Name="userIdentifier" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" FontFamily="{StaticResource MyriadBold}" TextColor="White"  Padding="2">
+                    <Label.FontSize>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="28"/>
+                    </Label.FontSize>
+                </Label>
+                
+            </StackLayout>
+        
+           
+        <Image x:Name="testImage1"/>
+        <ListView IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"  x:Name="itemList" BackgroundColor="ForestGreen" HasUnevenRows="True">
+          
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                           <RelativeLayout>
+                               <RelativeLayout.Margin>
+                                   <OnIdiom x:TypeArguments="Thickness" Tablet="0,20,0,20"/>
+                               </RelativeLayout.Margin>
+                                     <RelativeLayout.Resources>
+                                        <ResourceDictionary>
+                                             <OnPlatform x:TypeArguments="x:Double" iOS="-290" Android="-150" x:Key="XFactor" />
+                                             <OnPlatform x:TypeArguments="x:Double" iOS="220" Android="140" x:Key="Width" />
+                                             <OnIdiom x:TypeArguments="x:Double" Phone="-105" Tablet="-150" x:Key="FlagSectionOffset"/>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="-37" Tablet="-57" x:Key="FlagSectionYOffset"/>
+                                            
+                                        </ResourceDictionary>
+                                     </RelativeLayout.Resources>
+                               <RelativeLayout.HeightRequest>
+                                   <OnIdiom x:TypeArguments="x:Double" Phone="300" Tablet="600"/>
+                               </RelativeLayout.HeightRequest>
+                            <StackLayout BackgroundColor="#B1F1B3" x:Name="mainStack" Margin="7" Spacing="1">
+                                <StackLayout x:Name="profileStack" Orientation="Horizontal">
+                                    <ImageButton x:Name="profileLogo" ClassId="{Binding UserID}" AutomationId="{Binding UserName}" Clicked="OpenProfilePage" Source="{Binding UserPhoto}" WidthRequest="30" BackgroundColor="Transparent">
+                                        <ImageButton.HeightRequest>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="30" Tablet="80"/>
+                                        </ImageButton.HeightRequest>
+                                        <ImageButton.WidthRequest>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="30" Tablet="80"/>
+                                        </ImageButton.WidthRequest>
+                                    </ImageButton>
+                                    <Button x:Name="linkToProfile" ClassId="{Binding UserID}"  Margin="0" Clicked="OpenProfilePage" Padding="0" AutomationId="{Binding UserID}" BackgroundColor="Transparent" Text="{Binding UserName}" FontFamily="{StaticResource MyriadBold}" HeightRequest="10">
+                                        <Button.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="40"/>
+                                        </Button.FontSize>
+                                        <Button.HeightRequest>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="40"/>
+                                        </Button.HeightRequest>
+                                    </Button>
+                                    <Label VerticalTextAlignment="Center" Text="->" TextColor="Gray">
+                                        <Label.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="30"/>
+                                        </Label.FontSize>
+                                        </Label>
+                                    <Button x:Name="linkToPage" BackgroundColor="Transparent" Clicked="OpenPage" FontFamily="{StaticResource MyriadBold}" Text="{Binding PageName}" AutomationId="{Binding PageID}" ClassId="{Binding UserID}" Margin="0" Padding="0">
+                                    <Button.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="40"/>
+                                        </Button.FontSize>
+                                        <Button.HeightRequest>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="40"/>
+                                        </Button.HeightRequest>
+                                       </Button>
+                                    <Label VerticalOptions="CenterAndExpand" x:Name="postDate" Text="{Binding PostDate}" FontFamily="{StaticResource Myriad}" TextColor="Gray" Margin="0,0,5,0" HorizontalOptions="EndAndExpand">
+                                    <Label.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="30"/>
+                                        </Label.FontSize>
+                                        </Label>
+                                </StackLayout>
+                                <RelativeLayout VerticalOptions="FillAndExpand" RotationX="180" BackgroundColor="{Binding PicBackgroundColor}" x:Name="contentStack" HorizontalOptions="CenterAndExpand">
+                                    <RelativeLayout.HeightRequest>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="210" Tablet="450"/>
+                    </RelativeLayout.HeightRequest>
+                                    <StackLayout RotationX="180" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}" Orientation="Vertical">
+                                    <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Source="{Binding ImageURL}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Constant=1}"/>
+                                        </StackLayout>
+                                    <Button x:Name="sensitiveButton" ClassId="{Binding ContentID}" Clicked="ShowSensitiveButton" BackgroundColor="Black" IsVisible="{Binding SensitiveOn}" Opacity="0.9" RotationX="180" TextColor="White" Text="Photo Contains Sensitive Content. Click To View." RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"/>
+                                        <Label RotationX="180" x:Name="contentCaption" Text="{Binding PostCaption}" Padding="7" BackgroundColor="Black" TextColor="White" FontFamily="{StaticResource Myriad}" LineBreakMode="WordWrap" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.7}" HorizontalOptions="Start" VerticalOptions="End">
+                                            <Label.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="18" Tablet="40"/>
+                                        </Label.FontSize>
+                                        </Label>
+                                    <!--<StackLayout RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=-22}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=-155}">-->
+                                       
+                                        <!--<StackLayout RotationX="180" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=-205}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=-155}" x:Name="flagMenu" Padding="4"  WidthRequest="140"  Spacing="7" BackgroundColor="ForestGreen">
+                                            <Label HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="22" TextColor="White" FontFamily="{StaticResource MyriadBold}" Text="What's Up?"/>
+                                            <Label HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Padding="1" Margin="0"  FontSize="15" TextColor="#D7F9D8" FontFamily="{StaticResource Myriad}" BackgroundColor="Transparent" Text="This is offensive"/>
+                                            <Label HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"  Margin="0" LineBreakMode="WordWrap"  FontSize="15" TextColor="#D7F9D8" FontFamily="{StaticResource Myriad}" BackgroundColor="Transparent">
+                                                <Label.Text>
+                                                    This content is factually wrong
+                                                </Label.Text>
+                                                </Label>
+  
+                                            <Label HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" HeightRequest="40" LineBreakMode="WordWrap" Margin="0" FontSize="15" TextColor="#D7F9D8" FontFamily="{StaticResource Myriad}" BackgroundColor="Transparent" >
+                                                <Label.Text>
+                                                    I don't want to see this user's posts
+                                                </Label.Text>
+                                                </Label>
+
+                                       
+                                    </StackLayout>-->
+                                     <!--</StackLayout>-->
+                                        <Button x:Name="gestureButton" IsVisible="{Binding GestureOn}" Clicked="ShowInfo" ClassId="{Binding ContentID}" BackgroundColor="Transparent" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1}"/>
+                                     <StackLayout RotationX="180" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant={StaticResource Key=FlagSectionYOffset}}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant={StaticResource Key=FlagSectionOffset}}" Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="5" Margin="0,0,0,5">
+                                         
+                                         <StackLayout VerticalOptions="Center">
+                                         <ImageButton Clicked="ShowFlagMenu" ClassId="{Binding ContentID}" x:Name="flagButton" BackgroundColor="Transparent" Source="https://www.cvx4u.com/ActionBook/app_assets/flagicon.png">
+                                                <ImageButton.HeightRequest>
+                                                   
+                                                    <OnIdiom x:TypeArguments="x:Double" Phone="32" Tablet="70"/>
+                                                </ImageButton.HeightRequest>
+                                             <ImageButton.WidthRequest>
+                                                   
+                                                    <OnIdiom x:TypeArguments="x:Double" Phone="32" Tablet="70"/>
+                                                </ImageButton.WidthRequest>
+                                                
+
+                                            </ImageButton>
+                                             </StackLayout>
+                                            <Image x:Name="typeImage" HorizontalOptions="EndAndExpand" Source="{Binding TypeImageSource}">
+                                              <Image.HeightRequest>
+                                                   
+                                                    <OnIdiom x:TypeArguments="x:Double" Phone="32" Tablet="70"/>
+                                                </Image.HeightRequest>
+                                             <Image.WidthRequest>
+                                                   
+                                                    <OnIdiom x:TypeArguments="x:Double" Phone="32" Tablet="70"/>
+                                                </Image.WidthRequest>
+                                                </Image>
+                                     </StackLayout>
+                            
+
+                                </RelativeLayout>
+                                <StackLayout x:Name="bottomLayout" Padding="4" Orientation="Horizontal" BackgroundColor="#B1F1B3">
+                                    <RelativeLayout x:Name="likeLayout" VerticalOptions="Center" HorizontalOptions="Start">
+                                        <RelativeLayout.HeightRequest>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="40" Tablet="70"/>
+                                        </RelativeLayout.HeightRequest>
+                                        <RelativeLayout.WidthRequest>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="40" Tablet="70"/>
+                                        </RelativeLayout.WidthRequest>
+                                        <StackLayout x:Name="likeStack">
+                                            <Label Text="Like" Padding="0" TextColor="Green" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource Myriad}">
+                                                <Label.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="30"/>
+                                        </Label.FontSize>
+                                                </Label>
+                                            <Label x:Name="likeCount" HorizontalTextAlignment="Center" FontSize="17" Text="{Binding Likes}" FontFamily="{StaticResource Myriad}">
+                                                <Label.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="30"/>
+                                        </Label.FontSize>
+                                                </Label>
+                                        </StackLayout>
+                                        <Button x:Name="likeButton" ClassId="like" Clicked="ShowLikesDontShares" Text="{Binding Likes}" TextColor="Transparent" AutomationId="{Binding ContentID}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}" BackgroundColor="{Binding LikeButtonBackground}" Opacity="{Binding LikeButtonOpacity}" IsEnabled="{Binding LikesOn}"/>
+                                    </RelativeLayout>
+                                    <RelativeLayout x:Name="dontLikeLayout" HorizontalOptions="Start">
+                                        <RelativeLayout.HeightRequest>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="40" Tablet="70"/>
+                                        </RelativeLayout.HeightRequest>
+                                        <RelativeLayout.WidthRequest>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="80" Tablet="190"/>
+                                        </RelativeLayout.WidthRequest>
+                                        <StackLayout x:Name="dontLikeStack">
+                                            <Label Text="Don't Like" TextColor="Red" HorizontalTextAlignment="Center" FontFamily="{StaticResource Myriad}">
+                                                 <Label.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="30"/>
+                                        </Label.FontSize>
+                                                </Label>
+                                            <Label x:Name="dontLikeCount" HorizontalTextAlignment="Center" FontSize="17" Text="{Binding DontLikes}" FontFamily="{StaticResource Myriad}">
+                                                 <Label.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="30"/>
+                                        </Label.FontSize>
+                                                </Label>
+                                        </StackLayout>
+                                        <Button x:Name="dontLikeButton" ClassId="dontLike" Clicked="ShowLikesDontShares" Text="{Binding DontLikes}" TextColor="Transparent" AutomationId="{Binding ContentID}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}" BackgroundColor="{Binding DontLikeButtonBackground}" Opacity="{Binding DontLikeButtonOpacity}" IsEnabled="{Binding DontLikesOn}"/>
+                                    
+
+                                    </RelativeLayout>
+                                    <RelativeLayout x:Name="shareLayout" HorizontalOptions="EndAndExpand" HeightRequest="40" WidthRequest="120">
+                                         <RelativeLayout.HeightRequest>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="40" Tablet="70"/>
+                                        </RelativeLayout.HeightRequest>
+                                        <RelativeLayout.WidthRequest>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="140" Tablet="250"/>
+                                        </RelativeLayout.WidthRequest>
+                                        <StackLayout x:Name="shareStack">
+                                            <Label Text="Share To Page" Opacity="{Binding ShareOpacity}" TextColor="Blue" HorizontalTextAlignment="Center" FontSize="17" FontFamily="{StaticResource Myriad}">
+                                                 <Label.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="30"/>
+                                        </Label.FontSize>
+                                                </Label>
+                                            <Label x:Name="shareCount" Opacity="{Binding ShareOpacity}" HorizontalTextAlignment="Center" FontSize="17" Text="{Binding Shares}" FontFamily="{StaticResource Myriad}">
+                                                 <Label.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="30"/>
+                                        </Label.FontSize>
+                                                </Label>
+                                        </StackLayout>
+                                        <Button x:Name="shareButton" IsVisible="{Binding ShareEnabled}" ClassId="share" Clicked="ShowLikesDontShares" Text="{Binding Shares}" TextColor="Transparent" AutomationId="{Binding ContentID}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}" BackgroundColor="Transparent"/>
+                                    
+                                    </RelativeLayout>
+                                </StackLayout>
+                                   
+                            </StackLayout>
+                         
+                                       <StackLayout ClassId="{Binding ContentID}" x:Name="flagMenu" IsVisible="{Binding FlagMenuVisible}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=-215}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant={StaticResource Key=XFactor}}" Padding="4"  WidthRequest="{StaticResource Key=Width}"  Spacing="0" BackgroundColor="ForestGreen">
+
+                                            <Label HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="22" TextColor="White" FontFamily="{StaticResource MyriadBold}" Text="What's Up?"/>
+                                            <Button WidthRequest="215" HeightRequest="35" HorizontalOptions="CenterAndExpand" Padding="0" Margin="0"  FontSize="15" TextColor="#D7F9D8" FontFamily="{StaticResource Myriad}" BackgroundColor="Transparent" Clicked="ProcessIssue" ClassId="offensive" AutomationId="{Binding ContentID}" Text="This is offensive"/>
+                                            <Button WidthRequest="215"    HorizontalOptions="CenterAndExpand"  Margin="0" FontSize="15" TextColor="#D7F9D8" FontFamily="{StaticResource Myriad}" BackgroundColor="Transparent" ClassId="wrong" Clicked="ProcessIssue" AutomationId="{Binding ContentID}" Text="This content is factually wrong"/>
+                                            <Button WidthRequest="215"  HorizontalOptions="CenterAndExpand" Margin="0" FontSize="15" TextColor="#D7F9D8" FontFamily="{StaticResource Myriad}" BackgroundColor="Transparent" Clicked="ProcessIssue" ClassId="hideposts" AutomationId="{Binding ContentID}" Text="Block this user's posts"/>
+                                       
+                                       
+                                    </StackLayout>
+
+                                </RelativeLayout>
+                               
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+
+                
+            </ListView>
+            
+        
+            
+     </StackLayout>
+        <StackLayout Padding="14" x:Name="pickerLayout" BackgroundColor="ForestGreen" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.8}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=0.4}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.1}">
+            <Label TextColor="White" FontAttributes="Bold" FontSize="19" FontFamily="{StaticResource Myriad}"  Text="What Page Do You Want To Post To?" HorizontalTextAlignment="Center"/>
+            <Picker x:Name="pagePicker" HorizontalOptions="CenterAndExpand" BackgroundColor="#0f4a08" FontFamily="{StaticResource Myriad}" Title="Select Page to Post" TitleColor="White" TextColor="White"></Picker>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Button HorizontalOptions="StartAndExpand" x:Name="shareCancel" BackgroundColor="Transparent" FontSize="21" TextColor="#C9FFCB" FontFamily="{StaticResource Myriad}" Text="Cancel"/>
+                <Button HorizontalOptions="EndAndExpand" x:Name="shareSubmit" BackgroundColor="Transparent" FontSize="21" TextColor="#C9FFCB" FontFamily="{StaticResource Myriad}" Text="Submit"/>
+                </StackLayout>
+        </StackLayout>
+        <StackLayout Padding="14" IsVisible="false" x:Name="flagWindow" BackgroundColor="ForestGreen" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.8}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=0.4}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.1}">
+            <Label x:Name="flagWindowLabel" TextColor="White" FontAttributes="Bold" FontSize="19"  Text="Flag Text" HorizontalTextAlignment="Center"/>
+            
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Clicked="DismissFlagWindow"  BackgroundColor="Transparent" FontSize="21" TextColor="#C9FFCB" FontFamily="{StaticResource Myriad}" Text="OK"/>
+                
+                </StackLayout>
+        </StackLayout>
+        <StackLayout Padding="8" x:Name="mainMenu" BackgroundColor="#135A15">
+            <RelativeLayout.YConstraint>
+                 <OnIdiom x:TypeArguments="Constraint" Phone="{ConstraintExpression Type=Constant,Constant=65}" Tablet="{ConstraintExpression Type=Constant,Constant=105}"/>
+            </RelativeLayout.YConstraint>
+            <Button x:Name="editProfile" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" Text="Edit Profile">
+                <Button.FontSize>
+                    <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                </Button.FontSize>
+            </Button>
+            <Button x:Name="editPages" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Edit Pages">
+                  <Button.FontSize>
+                    <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                </Button.FontSize>
+            </Button>
+            <Button x:Name="logoutButton" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" FontSize="17" Text="Logout">
+                  <Button.FontSize>
+                    <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                </Button.FontSize>
+            </Button>
+            <Button x:Name="helpButton" BackgroundColor="Transparent" FontFamily="{StaticResource Myriad}" TextColor="White" Clicked="GoToHelp" FontSize="17" Text="Help">
+                  <Button.FontSize>
+                    <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                </Button.FontSize>
+            </Button>
+        </StackLayout>
+        <StackLayout x:Name="loadingWindow" BackgroundColor="ForestGreen" HeightRequest="90" WidthRequest="110" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.3}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.4}">
+            <Label Text="Loading" FontFamily="{StaticResource Myriad}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="27" TextColor="White"/>
+            <ActivityIndicator Color="White" IsRunning="True"/>
+        </StackLayout>
+        
+    </RelativeLayout>
+</ContentPage>

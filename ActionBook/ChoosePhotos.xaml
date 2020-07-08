@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage BackgroundColor="#005f28" NavigationPage.HasNavigationBar="False" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ActionBook.ChoosePhotos">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <Label HorizontalOptions="Center" Margin="10" FontSize="30" FontFamily="{StaticResource MyriadBold}" TextColor="White" Text="Choose Profile Photos"/>
+            <Label HorizontalOptions="Center" Margin="10" FontSize="25" FontFamily="{StaticResource MyriadBold}" TextColor="#c9ffd8" Text="These photos will appear on your profile page"/>
+            <RelativeLayout Margin="10" HeightRequest="150" BackgroundColor="Blue" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                <StackLayout BackgroundColor="Azure" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1}">
+                     <Image x:Name="viewBackImage" HeightRequest="150" BackgroundColor="#bcd4bf" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+
+                    </Image>
+                </StackLayout>
+                <StackLayout RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Factor=1,Property=Height}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=-90}" RelativeLayout.XConstraint="{ConstraintExpression Type=Constant,Constant=0}">
+                <Image x:Name="viewProfileImage" Aspect="AspectFill" BackgroundColor="#a7c9ab" HeightRequest="60" WidthRequest="60" />
+                <Label x:Name="userName" BackgroundColor="Black" Text="TEst" FontSize="20" TextColor="White" FontFamily="{StaticResource Myriad}"/>
+                </StackLayout>
+                </RelativeLayout>
+            <Label IsVisible="false" x:Name="errorLabel" Text="You must select a profile photo" FontSize="21" TextColor="Red" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource MyriadBold}"/>
+            <Button  Clicked="PhotoSelection" FontSize="21" ClassId="profile" FontFamily="{StaticResource MyriadBold}" TextColor="#c9ffd8" BackgroundColor="Transparent" Text="Choose Profile Photo"/>
+            <Button  Clicked="PhotoSelection" FontSize="21" ClassId="background" FontFamily="{StaticResource MyriadBold}" TextColor="#c9ffd8" BackgroundColor="Transparent" Text="Choose Background Photo"/>
+            
+            <StackLayout Spacing="100" Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Clicked="GoBack"  BackgroundColor="Transparent" FontSize="17" FontFamily="{StaticResource MyriadBold}" TextColor="White" Text="Go Back" ></Button>
+                <Button Clicked="SubmitPhotos"  BackgroundColor="Transparent" Text="Submit" FontSize="17" FontFamily="{StaticResource MyriadBold}" TextColor="White"></Button>
+                </StackLayout>  
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

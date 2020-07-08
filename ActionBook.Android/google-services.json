@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "261311431727",
+    "firebase_url": "https://action-book-760fb.firebaseio.com",
+    "project_id": "action-book-760fb",
+    "storage_bucket": "action-book-760fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261311431727:android:2c113a5d377ebec06272da",
+        "android_client_info": {
+          "package_name": "com.cvxtech.actionbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "261311431727-3irnp9bej4iggearirpnpkbfo2vmoffm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACjos4vsUlQa9Gj6G4dxIIRJO5EWS2E2g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "261311431727-3irnp9bej4iggearirpnpkbfo2vmoffm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "261311431727-uh4krg91n15qt4htt4f33h7m9m1eql0r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cvxtech.ActionBook"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

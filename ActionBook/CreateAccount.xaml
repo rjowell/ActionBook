@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage BackgroundColor="#005f28" NavigationPage.HasNavigationBar="False" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ActionBook.CreateAccount">
+    <ContentPage.Content>
+        <StackLayout Margin="30" VerticalOptions="Center">
+            <Label Text="Create Account" FontSize="30" FontFamily="{StaticResource MyriadBold}" TextColor="White">
+                <Label.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="30" Tablet="60"/>
+                   </Label.FontSize>
+            </Label>
+            <Label x:Name="statusMessage" TextColor="#FAA9A7" FontAttributes="Bold">
+                <Label.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="18" Tablet="31"/>
+                   </Label.FontSize>
+            </Label>
+            <Label Text="Handle" FontFamily="{StaticResource MyriadBold}" TextColor="White">
+                <Label.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="18" Tablet="31"/>
+                   </Label.FontSize>
+            </Label>
+            <Entry x:Name="userHandle" BackgroundColor="White" TextColor="Black">
+                <Entry.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                   </Entry.FontSize>
+            </Entry>
+            <Label Text="E-Mail" FontSize="17" FontFamily="{StaticResource MyriadBold}" TextColor="White">
+                <Label.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="18" Tablet="31"/>
+                   </Label.FontSize>
+            </Label>
+            <Entry x:Name="userEMail" BackgroundColor="White" TextColor="Black">
+                <Entry.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                   </Entry.FontSize>
+            </Entry>
+            <Label Text="Password" FontSize="17" FontFamily="{StaticResource MyriadBold}" TextColor="White">
+                <Label.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="18" Tablet="31"/>
+                   </Label.FontSize>
+            </Label>
+            <Entry x:Name="userPassword" IsPassword="True" BackgroundColor="White" TextColor="Black">
+                <Entry.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="17" Tablet="35"/>
+                   </Entry.FontSize>
+            </Entry>
+           
+            <StackLayout Spacing="100" Orientation="Horizontal" HorizontalOptions="Center">
+                <Button BackgroundColor="Transparent" FontFamily="{StaticResource MyriadBold}" TextColor="White" Text="Cancel" Clicked="GoBack" >
+                      <Button.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="18" Tablet="31"/>
+                   </Button.FontSize>
+                </Button>
+                <Button BackgroundColor="Transparent" Text="Continue" FontSize="17" FontFamily="{StaticResource MyriadBold}" TextColor="White" Clicked="CreateNewAccount" >
+                      <Button.FontSize>
+                <OnIdiom x:TypeArguments="x:Double" Phone="18" Tablet="31"/>
+                   </Button.FontSize>
+                </Button>
+                </StackLayout>  
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
